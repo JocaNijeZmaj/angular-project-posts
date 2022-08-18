@@ -13,7 +13,9 @@ export class PostsComponentComponent implements OnInit {
   
   ngOnInit() {
     this._postService.getPosts()
-        .subscribe(data => this.posts = data)
+        .subscribe(data => this.posts = data);
+
+    this._postService.newPostSubject.subscribe(data => this.posts.unshift(data))
   }
 
 }

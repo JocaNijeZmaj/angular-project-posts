@@ -1,0 +1,38 @@
+<h3>Add a post</h3>
+
+<div class="body">
+
+    <form #newPostForm="ngForm" (ngSubmit)="onPostSubmit(newPostForm.value)">
+        <div>
+            <label for="titel">Title</label>
+            <input
+            type="text"
+            placeholder="title"
+            name="title"
+            ngModel
+            required
+            minlength="3"
+            #text="ngModel">
+            
+        </div>
+        <div>
+            <label for="titel">body</label>
+            <input
+            type="text"
+            placeholder="body"
+            name="body"
+            ngModel
+            required
+            minlength="2"
+            #text2="ngModel">
+            
+        </div>
+        <button [disabled]="!newPostForm.valid" type="submit">Add Post</button>
+        <div class="errors">
+            <p class="alert" *ngIf="text.touched && !text.valid">title is not valid</p>
+            <p class="alert" *ngIf="text.errors?.['minlength']">title is to short</p>
+            <p *ngIf="text2.touched && !text2.valid" class="alert">body is not valid</p>
+            <p class="alert" *ngIf="text2.errors?.['minlength']">body is to short</p>
+        </div>
+    </form>
+</div>

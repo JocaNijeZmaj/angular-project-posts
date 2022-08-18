@@ -1,0 +1,23 @@
+form {
+    display: flex;
+    flex-direction: row;
+    gap: 3rem;
+    background-color: #aaaa;
+    padding: 2rem;
+    align-items: center;
+    justify-content: center;
+}
+input {
+    padding: 1rem;
+    margin: 0.5rem;
+}
+button {
+    border-radius: 15px;
+    height: 4rem;
+}
+.alert {
+    color: red;
+}
+.errors {
+    background-color: rgb(231, 181, 181);
+}
