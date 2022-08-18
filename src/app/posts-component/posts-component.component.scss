@@ -1,0 +1,12 @@
+table {
+    border: solid black 1px;
+}
+table {
+    display: flex;
+    flex-direction: row;
+    max-width: 1200px;
+}
+tr {
+    border: 1px;
+    padding: 5px;
+}
