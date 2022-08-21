@@ -8,13 +8,17 @@ import { HttpClientModule } from '@angular/common/http';
 import { PostsService } from './posts.service';
 import { PageNotFoundErrorComponent } from './page-not-found-error/page-not-found-error.component';
 import { AddPostFormComponent } from './add-post-form/add-post-form.component';
+import { CommentsComponent } from './comments-component/comments.component';
+import { CommentPostComponent } from './comment-post/comment-post.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     PostsComponentComponent,
     PageNotFoundErrorComponent,
-    AddPostFormComponent
+    AddPostFormComponent,
+    CommentsComponent,
+    CommentPostComponent
   ],
   imports: [
     BrowserModule,

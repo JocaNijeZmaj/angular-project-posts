@@ -1,8 +1,8 @@
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, Subject, throwError } from 'rxjs';
-import { IPost } from './posts';
-import { catchError } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
+import { IPost, IComment } from './posts';
+
 
 
 @Injectable({
@@ -10,7 +10,8 @@ import { catchError } from 'rxjs';
 })
 export class PostsService {
 
-  public newPostSubject = new Subject<any>()
+  public newPostSubject = new Subject<IPost>()
+  public newCommentSubject = new Subject<IComment>()
 
   constructor( private http: HttpClient) { }
 
@@ -18,9 +19,11 @@ export class PostsService {
     return this.http.get<IPost[]>('https://jsonplaceholder.typicode.com/posts');
     }
   
-  addPost(data:any) {
+  addPost(data: IPost) {
     this.newPostSubject.next(data);
-
   }
-
+  
+  AddComment(data: IComment) {
+    this.newCommentSubject.next(data);
+  }
 }

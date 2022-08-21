@@ -1,0 +1,50 @@
+<h1>Comments List</h1>
+
+<form #newCommentForm="ngForm" (ngSubmit)="onCommentSubmit(newCommentForm.value)">
+    <div>
+        <label for="titel">Title</label>
+        <input
+        type="text"
+        placeholder="title"
+        name="name"
+        ngModel
+        required
+        minlength="3"
+        #text1="ngModel">
+    </div>
+    <div>
+        <label for="email">E-mail</label>
+        <input
+        type="text"
+        placeholder="E-mail"
+        name="email"
+        ngModel
+        required
+        pattern="^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$"
+        #text2="ngModel">
+    </div>
+    <div>
+        <label for="comment">comment</label>
+        <input
+        type="text"
+        placeholder="comment"
+        name="body"
+        ngModel
+        required
+        minlength="3"
+        #text3="ngModel">
+    </div>
+    <button [disabled]="!newCommentForm.valid" type="submit">Add Post</button>
+    <div class="errors">
+        <p class="alert" *ngIf="text1.touched && !text1.valid">*title is not valid</p>
+        <p class="alert" *ngIf="text1.errors?.['minlength']">*title is to short</p>
+        <p class="alert" *ngIf="text3.errors?.['minlength']">*comment is to short</p>
+        <p *ngIf="text2.touched && !text2.valid" class="alert">*e-mail is not valid</p>
+        <p *ngIf="text3.touched && !text3.valid" class="alert">*comment is not valid</p>
+    </div>
+</form>
+    <ul class="item" *ngFor="let comment of comments">
+        <li>{{ comment.name }}</li>
+        <li>{{ comment.email }}</li>
+        <li>{{ comment.body }}</li>
+    </ul>
